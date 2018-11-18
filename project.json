@@ -1,0 +1,7 @@
+{
+    "id":"reflecs.components.http",
+    "type":"library",
+    "value": {
+        "use": ["reflecs"]
+    }
+}
