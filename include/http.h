@@ -47,6 +47,7 @@ typedef struct EcsHttpServer {
 struct EcsHttpEndpoint {
     char *url;
     void *ctx;
+    bool synchronous;
     EcsHttpServiceAction action;
 };
 
