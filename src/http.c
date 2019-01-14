@@ -5,7 +5,6 @@ void EcsHttpInit(EcsRows *rows) {
     for (row = rows->first; row < rows->last; row = ecs_next(rows, row)) {
         EcsHandle entity = ecs_entity(row);
         ecs_add(rows->world, entity, EcsContainer_h);
-        ecs_commit(rows->world, entity);
     }
 }
 
