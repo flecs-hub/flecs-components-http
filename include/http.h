@@ -23,7 +23,7 @@ typedef struct EcsHttpRequest {
     const char *params;
     void *ctx;
     EcsHttpMethod method;
-    EcsHandle server;
+    EcsEntity server;
 } EcsHttpRequest;
 
 typedef struct EcsHttpReply {
@@ -35,7 +35,7 @@ typedef struct EcsHttpReply {
 
 typedef bool (*EcsHttpServiceAction)(
     EcsWorld *world,
-    EcsHandle entity,
+    EcsEntity entity,
     EcsHttpEndpoint *endpoint,
     EcsHttpRequest *request,
     EcsHttpReply *reply);
@@ -52,8 +52,8 @@ struct EcsHttpEndpoint {
 };
 
 typedef struct EcsComponentsHttpHandles {
-    EcsHandle HttpServer;
-    EcsHandle HttpEndpoint;
+    EcsEntity HttpServer;
+    EcsEntity HttpEndpoint;
 } EcsComponentsHttpHandles;
 
 void EcsComponentsHttp(

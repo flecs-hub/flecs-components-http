@@ -3,7 +3,7 @@
 void EcsHttpInit(EcsRows *rows) {
     void *row;
     for (row = rows->first; row < rows->last; row = ecs_next(rows, row)) {
-        EcsHandle entity = ecs_entity(row);
+        EcsEntity entity = ecs_entity(rows, row, 0);
         ecs_add(rows->world, entity, EcsContainer_h);
     }
 }
