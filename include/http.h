@@ -62,8 +62,8 @@ void EcsComponentsHttp(
     void *handles_out);
 
 #define EcsComponentsHttp_ImportHandles(handles)\
-    ECS_IMPORT_HANDLE(handles, EcsHttpServer);\
-    ECS_IMPORT_HANDLE(handles, EcsHttpEndpoint);
+    ECS_IMPORT_COMPONENT(handles, EcsHttpServer);\
+    ECS_IMPORT_COMPONENT(handles, EcsHttpEndpoint);
 
 #ifdef __cplusplus
 }
