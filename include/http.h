@@ -1,5 +1,5 @@
-#ifndef REFLECS_COMPONENTS_HTTP_H
-#define REFLECS_COMPONENTS_HTTP_H
+#ifndef FLECS_COMPONENTS_HTTP_H
+#define FLECS_COMPONENTS_HTTP_H
 
 #include "bake_config.h"
 
@@ -52,8 +52,8 @@ struct EcsHttpEndpoint {
 };
 
 typedef struct EcsComponentsHttpHandles {
-    EcsEntity HttpServer;
-    EcsEntity HttpEndpoint;
+    ECS_DECLARE_COMPONENT(EcsHttpServer);
+    ECS_DECLARE_COMPONENT(EcsHttpEndpoint);
 } EcsComponentsHttpHandles;
 
 void EcsComponentsHttp(
@@ -61,9 +61,9 @@ void EcsComponentsHttp(
     int flags,
     void *handles_out);
 
-#define EcsComponentsHttp_DeclareHandles(handles)\
-    EcsDeclareHandle(handles, HttpServer);\
-    EcsDeclareHandle(handles, HttpEndpoint);
+#define EcsComponentsHttp_ImportHandles(handles)\
+    ECS_IMPORT_HANDLE(handles, EcsHttpServer);\
+    ECS_IMPORT_HANDLE(handles, EcsHttpEndpoint);
 
 #ifdef __cplusplus
 }

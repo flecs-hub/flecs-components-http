@@ -1,9 +1,9 @@
 {
-    "id":"reflecs.components.http",
+    "id":"flecs.components.http",
     "type":"package",
     "value": {
         "author": "Sander Mertens",
-        "description": "HTTP components for reflecs",
-        "use": ["reflecs"]
+        "description": "HTTP components for flecs",
+        "use": ["flecs"]
     }
 }

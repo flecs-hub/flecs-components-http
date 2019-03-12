@@ -1,10 +1,11 @@
 #include <include/http.h>
 
 void EcsHttpInit(EcsRows *rows) {
-    void *row;
-    for (row = rows->first; row < rows->last; row = ecs_next(rows, row)) {
-        EcsEntity entity = ecs_entity(rows, row, 0);
-        ecs_add(rows->world, entity, EcsContainer_h);
+    EcsEntity *e = ecs_column(rows, EcsEntity, 0);
+
+    int i;
+    for (i = rows->begin; i < rows->end; i ++) {
+        ecs_add(rows->world, e[i], EcsContainer);
     }
 }
 
@@ -14,6 +15,7 @@ void EcsComponentsHttp(
     void *handles_out)
 {
     EcsComponentsHttpHandles *handles = handles_out;
+
     ECS_COMPONENT(world, EcsHttpServer);
     ECS_COMPONENT(world, EcsHttpEndpoint);
 
@@ -22,6 +24,6 @@ void EcsComponentsHttp(
      * container for endpoints */
     ECS_SYSTEM(world, EcsHttpInit, EcsOnAdd, EcsHttpServer);
 
-    handles->HttpServer = EcsHttpServer_h;
-    handles->HttpEndpoint = EcsHttpEndpoint_h;
+    ECS_SET_COMPONENT(handles, EcsHttpServer);
+    ECS_SET_COMPONENT(handles, EcsHttpEndpoint);
 }
