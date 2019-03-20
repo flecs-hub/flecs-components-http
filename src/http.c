@@ -4,7 +4,7 @@ void EcsHttpInit(EcsRows *rows) {
     EcsEntity *e = ecs_column(rows, EcsEntity, 0);
 
     int i;
-    for (i = rows->begin; i < rows->end; i ++) {
+    for (i = 0; i < rows->count; i ++) {
         ecs_add(rows->world, e[i], EcsContainer);
     }
 }
