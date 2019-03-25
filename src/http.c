@@ -1,7 +1,7 @@
 #include <include/http.h>
 
 void EcsHttpInit(ecs_rows_t *rows) {
-    EcsEntity *e = ecs_column(rows, EcsEntity, 0);
+    ecs_entity_t *e = ecs_column(rows, ecs_entity_t, 0);
 
     int i;
     for (i = 0; i < rows->count; i ++) {
