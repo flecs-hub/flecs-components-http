@@ -34,7 +34,7 @@ typedef struct EcsHttpReply {
 } EcsHttpReply;
 
 typedef bool (*EcsHttpServiceAction)(
-    EcsWorld *world,
+    ecs_world_t *world,
     EcsEntity entity,
     EcsHttpEndpoint *endpoint,
     EcsHttpRequest *request,
@@ -57,7 +57,7 @@ typedef struct EcsComponentsHttpHandles {
 } EcsComponentsHttpHandles;
 
 void EcsComponentsHttp(
-    EcsWorld *world,
+    ecs_world_t *world,
     int flags,
     void *handles_out);
 

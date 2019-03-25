@@ -1,6 +1,6 @@
 #include <include/http.h>
 
-void EcsHttpInit(EcsRows *rows) {
+void EcsHttpInit(ecs_rows_t *rows) {
     EcsEntity *e = ecs_column(rows, EcsEntity, 0);
 
     int i;
@@ -10,7 +10,7 @@ void EcsHttpInit(EcsRows *rows) {
 }
 
 void EcsComponentsHttp(
-    EcsWorld *world,
+    ecs_world_t *world,
     int flags,
     void *handles_out)
 {
