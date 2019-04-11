@@ -56,6 +56,7 @@ typedef struct EcsComponentsHttpHandles {
     ECS_DECLARE_COMPONENT(EcsHttpEndpoint);
 } EcsComponentsHttpHandles;
 
+FLECS_COMPONENTS_HTTP_EXPORT 
 void EcsComponentsHttp(
     ecs_world_t *world,
     int flags,
