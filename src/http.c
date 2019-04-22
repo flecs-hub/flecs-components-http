@@ -9,12 +9,11 @@ void EcsHttpInit(ecs_rows_t *rows) {
     }
 }
 
-void EcsComponentsHttp(
+void FlecsComponentsHttpImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out)
+    int flags)
 {
-    EcsComponentsHttpHandles *handles = handles_out;
+    ECS_MODULE(world, FlecsComponentsHttp);
 
     ECS_COMPONENT(world, EcsHttpServer);
     ECS_COMPONENT(world, EcsHttpEndpoint);

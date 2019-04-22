@@ -51,18 +51,17 @@ struct EcsHttpEndpoint {
     EcsHttpServiceAction action;
 };
 
-typedef struct EcsComponentsHttpHandles {
+typedef struct FlecsComponentsHttp {
     ECS_DECLARE_COMPONENT(EcsHttpServer);
     ECS_DECLARE_COMPONENT(EcsHttpEndpoint);
-} EcsComponentsHttpHandles;
+} FlecsComponentsHttp;
 
 FLECS_COMPONENTS_HTTP_EXPORT 
-void EcsComponentsHttp(
+void FlecsComponentsHttpImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out);
+    int flags);
 
-#define EcsComponentsHttp_ImportHandles(handles)\
+#define FlecsComponentsHttpImportHandles(handles)\
     ECS_IMPORT_COMPONENT(handles, EcsHttpServer);\
     ECS_IMPORT_COMPONENT(handles, EcsHttpEndpoint);
 
