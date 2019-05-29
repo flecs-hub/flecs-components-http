@@ -1,4 +1,4 @@
-#include <include/http.h>
+#include <flecs_components_http.h>
 
 void EcsHttpInit(ecs_rows_t *rows) {
     ecs_entity_t *e = ecs_column(rows, ecs_entity_t, 0);

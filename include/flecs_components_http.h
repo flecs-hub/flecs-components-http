@@ -1,7 +1,7 @@
 #ifndef FLECS_COMPONENTS_HTTP_H
 #define FLECS_COMPONENTS_HTTP_H
 
-#include "bake_config.h"
+#include <flecs-components-http/bake_config.h>
 
 #ifdef __cplusplus
 extern "C" {
