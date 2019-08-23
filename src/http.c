@@ -9,6 +9,6 @@ void FlecsComponentsHttpImport(
     ECS_COMPONENT(world, EcsHttpServer);
     ECS_COMPONENT(world, EcsHttpEndpoint);
 
-    ECS_SET_COMPONENT(handles, EcsHttpServer);
-    ECS_SET_COMPONENT(handles, EcsHttpEndpoint);
+    ECS_SET_COMPONENT(EcsHttpServer);
+    ECS_SET_COMPONENT(EcsHttpEndpoint);
 }
