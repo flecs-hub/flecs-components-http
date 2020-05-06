@@ -61,6 +61,14 @@ void FlecsComponentsHttpImport(
     ecs_world_t *world,
     int flags);
 
+/* Utility to get parameter from query string */
+FLECS_COMPONENTS_HTTP_EXPORT
+size_t ecs_http_get_query_param(
+    const char *query,
+    const char *name, 
+    char *buffer, 
+    size_t len);
+
 #define FlecsComponentsHttpImportHandles(handles)\
     ECS_IMPORT_COMPONENT(handles, EcsHttpServer);\
     ECS_IMPORT_COMPONENT(handles, EcsHttpEndpoint);
