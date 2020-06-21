@@ -81,10 +81,12 @@ void FlecsComponentsHttpImport(
 {
     ECS_MODULE(world, FlecsComponentsHttp);
 
-    ecs_set_name_prefix(world, "Ecs");
+    ECS_IMPORT(world, FlecsMeta, 0);
+    
+    ecs_set_name_prefix(world, "EcsHttp");
 
-    ECS_COMPONENT(world, EcsHttpServer);
-    ECS_COMPONENT(world, EcsHttpEndpoint);
+    ECS_META(world, EcsHttpServer);
+    ECS_META(world, EcsHttpEndpoint);
 
     ECS_SET_COMPONENT(EcsHttpServer);
     ECS_SET_COMPONENT(EcsHttpEndpoint);

@@ -19,6 +19,7 @@
 
 /* Headers of public dependencies */
 #include <flecs.h>
+#include <flecs_meta.h>
 
 /* Headers of private dependencies */
 #ifdef FLECS_COMPONENTS_HTTP_IMPL

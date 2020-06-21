@@ -7,15 +7,15 @@
 extern "C" {
 #endif
 
-typedef enum EcsHttpMethod {
+ECS_ENUM(EcsHttpMethod, {
     EcsHttpGet,
     EcsHttpPost,
     EcsHttpPut,
     EcsHttpDelete,
     EcsHttpMethodUnknown
-} EcsHttpMethod;
+});
 
-typedef struct EcsHttpEndpoint EcsHttpEndpoint;
+struct EcsHttpEndpoint;
 
 typedef struct EcsHttpRequest {
     const char *url;
@@ -26,30 +26,32 @@ typedef struct EcsHttpRequest {
     ecs_entity_t server;
 } EcsHttpRequest;
 
-typedef struct EcsHttpReply {
+ECS_STRUCT(EcsHttpReply, {
     char *header;
     char *body;
     int status;
     bool is_file;
-} EcsHttpReply;
+});
 
 typedef bool (*EcsHttpServiceAction)(
     ecs_world_t *world,
     ecs_entity_t entity,
-    EcsHttpEndpoint *endpoint,
+    struct EcsHttpEndpoint *endpoint,
     EcsHttpRequest *request,
     EcsHttpReply *reply);
 
-typedef struct EcsHttpServer {
+ECS_STRUCT(EcsHttpServer, {
     uint16_t port;
-} EcsHttpServer;
+});
 
-struct EcsHttpEndpoint {
+ECS_STRUCT(EcsHttpEndpoint, {
     char *url;
     void *ctx;
     bool synchronous;
+
+ECS_NON_SERIALIZABLE
     EcsHttpServiceAction action;
-};
+});
 
 typedef struct FlecsComponentsHttp {
     ECS_DECLARE_COMPONENT(EcsHttpServer);
