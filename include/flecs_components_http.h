@@ -49,7 +49,7 @@ ECS_STRUCT(EcsHttpEndpoint, {
     void *ctx;
     bool synchronous;
 
-ECS_NON_SERIALIZABLE
+ECS_PRIVATE
     EcsHttpServiceAction action;
 });
 
@@ -60,8 +60,7 @@ typedef struct FlecsComponentsHttp {
 
 FLECS_COMPONENTS_HTTP_EXPORT 
 void FlecsComponentsHttpImport(
-    ecs_world_t *world,
-    int flags);
+    ecs_world_t *world);
 
 /* Utility to get parameter from query string */
 FLECS_COMPONENTS_HTTP_EXPORT
