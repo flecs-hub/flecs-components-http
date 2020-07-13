@@ -52,7 +52,7 @@ size_t ecs_http_get_query_param(
                     /* Check if requested key matches */
                     if (arg_len == key_len && !strncmp(name, start, key_len)) {
                         size_t size;
-                        if (cur - value < len) {
+                        if (cur - value < (int32_t)len) {
                             size = cur - value;
                         } else {
                             size = len - 1;
@@ -76,13 +76,16 @@ size_t ecs_http_get_query_param(
 }
 
 void FlecsComponentsHttpImport(
-    ecs_world_t *world,
-    int flags)
+    ecs_world_t *world)
 {
     ECS_MODULE(world, FlecsComponentsHttp);
 
-    ECS_COMPONENT(world, EcsHttpServer);
-    ECS_COMPONENT(world, EcsHttpEndpoint);
+    ECS_IMPORT(world, FlecsMeta);
+    
+    ecs_set_name_prefix(world, "EcsHttp");
+
+    ECS_META(world, EcsHttpServer);
+    ECS_META(world, EcsHttpEndpoint);
 
     ECS_SET_COMPONENT(EcsHttpServer);
     ECS_SET_COMPONENT(EcsHttpEndpoint);

@@ -19,23 +19,19 @@
 
 /* Headers of public dependencies */
 #include <flecs.h>
-
-/* Headers of private dependencies */
-#ifdef FLECS_COMPONENTS_HTTP_IMPL
-/* No dependencies */
-#endif
+#include <flecs_meta.h>
 
 /* Convenience macro for exporting symbols */
-#ifndef FLECS_COMPONENTS_HTTP_STATIC
-  #if FLECS_COMPONENTS_HTTP_IMPL && (defined(_MSC_VER) || defined(__MINGW32__))
-    #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllexport)
-  #elif FLECS_COMPONENTS_HTTP_IMPL
-    #define FLECS_COMPONENTS_HTTP_EXPORT __attribute__((__visibility__("default")))
-  #elif defined _MSC_VER
-    #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllimport)
-  #else
-    #define FLECS_COMPONENTS_HTTP_EXPORT
-  #endif
+#ifndef flecs_components_http_STATIC
+#if flecs_components_http_EXPORTS && (defined(_MSC_VER) || defined(__MINGW32__))
+  #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllexport)
+#elif flecs_components_http_EXPORTS
+  #define FLECS_COMPONENTS_HTTP_EXPORT __attribute__((__visibility__("default")))
+#elif defined _MSC_VER
+  #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllimport)
+#else
+  #define FLECS_COMPONENTS_HTTP_EXPORT
+#endif
 #else
   #define FLECS_COMPONENTS_HTTP_EXPORT
 #endif
