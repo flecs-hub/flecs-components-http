@@ -24,16 +24,16 @@
 /* Convenience macro for exporting symbols */
 #ifndef flecs_components_http_STATIC
 #if flecs_components_http_EXPORTS && (defined(_MSC_VER) || defined(__MINGW32__))
-  #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllexport)
+  #define FLECS_COMPONENTS_HTTP_API __declspec(dllexport)
 #elif flecs_components_http_EXPORTS
-  #define FLECS_COMPONENTS_HTTP_EXPORT __attribute__((__visibility__("default")))
+  #define FLECS_COMPONENTS_HTTP_API __attribute__((__visibility__("default")))
 #elif defined _MSC_VER
-  #define FLECS_COMPONENTS_HTTP_EXPORT __declspec(dllimport)
+  #define FLECS_COMPONENTS_HTTP_API __declspec(dllimport)
 #else
-  #define FLECS_COMPONENTS_HTTP_EXPORT
+  #define FLECS_COMPONENTS_HTTP_API
 #endif
 #else
-  #define FLECS_COMPONENTS_HTTP_EXPORT
+  #define FLECS_COMPONENTS_HTTP_API
 #endif
 
 #endif

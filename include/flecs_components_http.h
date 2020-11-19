@@ -58,12 +58,12 @@ typedef struct FlecsComponentsHttp {
     ECS_DECLARE_COMPONENT(EcsHttpEndpoint);
 } FlecsComponentsHttp;
 
-FLECS_COMPONENTS_HTTP_EXPORT 
+FLECS_COMPONENTS_HTTP_API 
 void FlecsComponentsHttpImport(
     ecs_world_t *world);
 
 /* Utility to get parameter from query string */
-FLECS_COMPONENTS_HTTP_EXPORT
+FLECS_COMPONENTS_HTTP_API
 size_t ecs_http_get_query_param(
     const char *query,
     const char *name, 
