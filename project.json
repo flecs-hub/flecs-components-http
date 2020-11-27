@@ -4,6 +4,7 @@
     "value": {
         "author": "Sander Mertens",
         "description": "HTTP components for flecs",
-        "use": ["flecs", "flecs.meta"]
+        "use": ["flecs", "flecs.meta"],
+        "amalgamate": true
     }
 }
