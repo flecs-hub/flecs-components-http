@@ -3,10 +3,6 @@
 
 #include <flecs-components-http/bake_config.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 ECS_ENUM(EcsHttpMethod, {
     EcsHttpGet,
     EcsHttpPost,
@@ -52,6 +48,10 @@ ECS_STRUCT(EcsHttpEndpoint, {
 ECS_PRIVATE
     EcsHttpServiceAction action;
 });
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct FlecsComponentsHttp {
     ECS_DECLARE_COMPONENT(EcsHttpServer);
