@@ -3,6 +3,19 @@
 
 #include <flecs-components-http/bake_config.h>
 
+struct EcsHttpEndpoint;
+struct EcsHttpRequest;
+struct EcsHttpReply;
+
+typedef bool (*EcsHttpServiceAction)(
+    ecs_world_t *world,
+    ecs_entity_t entity,
+    struct EcsHttpEndpoint *endpoint,
+    struct EcsHttpRequest *request,
+    struct EcsHttpReply *reply);
+
+#ifndef FLECS_LEGACY
+
 ECS_ENUM(EcsHttpMethod, {
     EcsHttpGet,
     EcsHttpPost,
@@ -11,16 +24,14 @@ ECS_ENUM(EcsHttpMethod, {
     EcsHttpMethodUnknown
 });
 
-struct EcsHttpEndpoint;
-
-typedef struct EcsHttpRequest {
+ECS_STRUCT(EcsHttpRequest, {
     const char *url;
     const char *relative_url;
     const char *params;
     void *ctx;
     EcsHttpMethod method;
     ecs_entity_t server;
-} EcsHttpRequest;
+});
 
 ECS_STRUCT(EcsHttpReply, {
     char *header;
@@ -29,12 +40,6 @@ ECS_STRUCT(EcsHttpReply, {
     bool is_file;
 });
 
-typedef bool (*EcsHttpServiceAction)(
-    ecs_world_t *world,
-    ecs_entity_t entity,
-    struct EcsHttpEndpoint *endpoint,
-    EcsHttpRequest *request,
-    EcsHttpReply *reply);
 
 ECS_STRUCT(EcsHttpServer, {
     uint16_t port;
@@ -48,6 +53,9 @@ ECS_STRUCT(EcsHttpEndpoint, {
 ECS_PRIVATE
     EcsHttpServiceAction action;
 });
+
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
