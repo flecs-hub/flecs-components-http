@@ -22,7 +22,7 @@ ECS_ENUM(EcsHttpMethod, {
     EcsHttpPut,
     EcsHttpDelete,
     EcsHttpMethodUnknown
-});
+})
 
 ECS_STRUCT(EcsHttpRequest, {
     const char *url;
@@ -31,28 +31,28 @@ ECS_STRUCT(EcsHttpRequest, {
     void *ctx;
     EcsHttpMethod method;
     ecs_entity_t server;
-});
+})
 
 ECS_STRUCT(EcsHttpReply, {
     char *header;
     char *body;
     int status;
     bool is_file;
-});
+})
 
 
 ECS_STRUCT(EcsHttpServer, {
     uint16_t port;
-});
+})
 
 ECS_STRUCT(EcsHttpEndpoint, {
-    char *url;
+    const char *url;
     void *ctx;
     bool synchronous;
 
 ECS_PRIVATE
     EcsHttpServiceAction action;
-});
+})
 
 #endif
 

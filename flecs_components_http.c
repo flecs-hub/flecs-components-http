@@ -10,8 +10,56 @@ void decode(
 
     for (ptr = str; (ch = *ptr); ptr++) {
         if (ch == '%') {
-            if (ptr[1] == '2' && ptr[2] == '0') {
-                dst[0] = ' ';
+            if (ptr[1] == '2') {
+                if (ptr[2] == '0') {
+                    dst[0] = ' ';
+                } else 
+                if (ptr[2] == '1') {
+                    dst[0] = '!';
+                } else 
+                if (ptr[2] == '2') {
+                    dst[0] = '"';
+                } else 
+                if (ptr[2] == '3') {
+                    dst[0] = '#';
+                } else 
+                if (ptr[2] == '4') {
+                    dst[0] = '$';
+                } else 
+                if (ptr[2] == '5') {
+                    dst[0] = '%';
+                } else 
+                if (ptr[2] == '6') {
+                    dst[0] = '&';
+                } else 
+                if (ptr[2] == '7') {
+                    dst[0] = '\'';
+                } else 
+                if (ptr[2] == '8') {
+                    dst[0] = '(';
+                } else 
+                if (ptr[2] == '9') {
+                    dst[0] = ')';
+                } else 
+                if (ptr[2] == 'A') {
+                    dst[0] = '*';
+                } else 
+                if (ptr[2] == 'B') {
+                    dst[0] = '+';
+                } else 
+                if (ptr[2] == 'C') {
+                    dst[0] = ',';
+                } else 
+                if (ptr[2] == 'D') {
+                    dst[0] = '-';
+                } else 
+                if (ptr[2] == 'E') {
+                    dst[0] = '.';
+                } else 
+                if (ptr[2] == 'F') {
+                    dst[0] = '/';
+                }
+                
                 dst ++;
                 ptr += 2;
             }

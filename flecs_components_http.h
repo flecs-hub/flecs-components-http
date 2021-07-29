@@ -43,51 +43,59 @@
 #endif
 
 
+struct EcsHttpEndpoint;
+struct EcsHttpRequest;
+struct EcsHttpReply;
+
+typedef bool (*EcsHttpServiceAction)(
+    ecs_world_t *world,
+    ecs_entity_t entity,
+    struct EcsHttpEndpoint *endpoint,
+    struct EcsHttpRequest *request,
+    struct EcsHttpReply *reply);
+
+#ifndef FLECS_LEGACY
+
 ECS_ENUM(EcsHttpMethod, {
     EcsHttpGet,
     EcsHttpPost,
     EcsHttpPut,
     EcsHttpDelete,
     EcsHttpMethodUnknown
-});
+})
 
-struct EcsHttpEndpoint;
-
-typedef struct EcsHttpRequest {
+ECS_STRUCT(EcsHttpRequest, {
     const char *url;
     const char *relative_url;
     const char *params;
     void *ctx;
     EcsHttpMethod method;
     ecs_entity_t server;
-} EcsHttpRequest;
+})
 
 ECS_STRUCT(EcsHttpReply, {
     char *header;
     char *body;
     int status;
     bool is_file;
-});
+})
 
-typedef bool (*EcsHttpServiceAction)(
-    ecs_world_t *world,
-    ecs_entity_t entity,
-    struct EcsHttpEndpoint *endpoint,
-    EcsHttpRequest *request,
-    EcsHttpReply *reply);
 
 ECS_STRUCT(EcsHttpServer, {
     uint16_t port;
-});
+})
 
 ECS_STRUCT(EcsHttpEndpoint, {
-    char *url;
+    const char *url;
     void *ctx;
     bool synchronous;
 
 ECS_PRIVATE
     EcsHttpServiceAction action;
-});
+})
+
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
